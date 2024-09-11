@@ -37,6 +37,11 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     href: '/ilo',
   },
   {
+    label: t('IFO'),
+    icon: 'IfoIcon',
+    href: '/ifo',
+  },
+  {
     label: t('NFT'),
     icon: 'NftIcon',
     href: '/nft',

@@ -20,53 +20,53 @@ const useGetPublicIfoData = (): any => {
 
   const [state, setState] = useState({
     status: -2,
-    costPresaleBNB:-2,
-      costPresaleETH:-2,
-    listingPrice:-2,
-    softcap:-2,
-    hardcap:-2,
-    sold:-2,
-    decimals:-2,
-    _name:"",
-    symbol:"",
-    link:"",
-    logolink:"",
-    headerlogo:"",
-    isWhitelistOn:false,
-    users:-2,
-    maxUserAmount:-2,
-    startPresaleTime:-2,
-    endPresaleTime:-2,
-    paused:true,
-    ILOToken:""
+    costPresaleBNB: -2,
+    costPresaleETH: -2,
+    listingPrice: -2,
+    softcap: -2,
+    hardcap: -2,
+    sold: -2,
+    decimals: -2,
+    _name: "",
+    symbol: "",
+    link: "",
+    logolink: "",
+    headerlogo: "",
+    isWhitelistOn: false,
+    users: -2,
+    maxUserAmount: -2,
+    startPresaleTime: -2,
+    endPresaleTime: -2,
+    paused: true,
+    ILOToken: ""
   })
   const { currentBlock } = useBlock()
 
- const address=getIfov3Address();
+  const address = getIfov3Address();
   const fetchIfoData = useCallback(async () => {
     const ifoCalls = ['status',
-    'costPresaleBNB',
+      'costPresaleBNB',
       'costPresaleETH',
-    'listingPrice',
-    'softcap',
-    'hardcap',
-    'sold',
-    'decimals',
-    '_name',
-    'symbol',
-    'link',
-    'logolink',
-    'headerlogo',
-    'isWhitelistOn',
-    'users',
-    'maxUserAmount',
-    'startPresaleTime',
-    'endPresaleTime',
-    'paused',
-    'ILOToken'].map((method) => ({
-      address,
-      name: method,
-    }))
+      'listingPrice',
+      'softcap',
+      'hardcap',
+      'sold',
+      'decimals',
+      '_name',
+      'symbol',
+      'link',
+      'logolink',
+      'headerlogo',
+      'isWhitelistOn',
+      'users',
+      'maxUserAmount',
+      'startPresaleTime',
+      'endPresaleTime',
+      'paused',
+      'ILOToken'].map((method) => ({
+        address,
+        name: method,
+      }))
 
     const [status,
       costPresaleBNB,
@@ -87,9 +87,9 @@ const useGetPublicIfoData = (): any => {
       startPresaleTime,
       endPresaleTime,
       paused,
-      ILOToken  ] = await multicallv2(ifoV3Abi, ifoCalls)
-      setState((prev) => ({
-        status,
+      ILOToken] = await multicallv2(ifoV3Abi, ifoCalls)
+    setState((prev) => ({
+      status,
       costPresaleBNB,
       costPresaleETH,
       listingPrice,
@@ -108,16 +108,16 @@ const useGetPublicIfoData = (): any => {
       startPresaleTime,
       endPresaleTime,
       paused,
-      ILOToken 
-      }))
-  },[address])
-    
+      ILOToken
+    }))
+  }, [address])
+
   useEffect(() => {
     fetchIfoData()
   }, [fetchIfoData, fastRefresh])
 
 
- return {...state}
+  return { ...state }
 }
 
 export default useGetPublicIfoData

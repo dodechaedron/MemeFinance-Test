@@ -21,7 +21,7 @@ const useGetPublicIfoData = (): any => {
   const [state, setState] = useState({
     status: -2,
     costPresaleBNB:-2,
-      costPresaleETH:-2,
+    costPresaleETH:-2,
     listingPrice:-2,
     softcap:-2,
     hardcap:-2,
